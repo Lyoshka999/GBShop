@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,46 +16,56 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        let auth = requestFactory.makeAuthRequestFactory()
-        auth.login(userName: "Somebody", password: "mypassword") { response in
+//        let auth = requestFactory.makeAuthRequestFactory()
+//        auth.login(userName: "Somebody", password: "mypassword") { response in
+//            switch response.result {
+//            case .success(let login):
+//                print(login)
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//            }
+//        }
+//
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//            auth.logout(userID: "123") { response in
+//                switch response.result {
+//                case .success(let logout):
+//                    print("logout \(logout)")
+//                case .failure(let error):
+//                    print(error.localizedDescription)
+//                }
+//            }
+//        }
+//
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+//            auth.registry(userID: "123", userName: "123", password: "123", email: "123") { response in
+//                switch response.result {
+//                case .success(let logout):
+//                    print("registry \(logout)")
+//                case .failure(let error):
+//                    print(error.localizedDescription)
+//                }
+//            }
+//        }
+//
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+//            auth.changeUserData(userID: "123", userName: "123", password: "123", email: "123") { response in
+//                switch response.result {
+//                case .success(let logout):
+//                    print("changeUserData \(logout)")
+//                case .failure(let error):
+//                    print(error.localizedDescription)
+//                }
+//            }
+//        }
+        
+        let productRequestFactory = self.requestFactory.makeProductListRequestFactory()
+        productRequestFactory.getProductList(page: 1, category: 1) { response in
             switch response.result {
-            case .success(let login):
-                print(login)
+            case .success(let result):
+                print("результат \(result)")
             case .failure(let error):
                 print(error.localizedDescription)
-            }
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            auth.logout(userID: "123") { response in
-                switch response.result {
-                case .success(let logout):
-                    print("logout \(logout)")
-                case .failure(let error):
-                    print(error.localizedDescription)
-                }
-            }
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            auth.registry(userID: "123", userName: "123", password: "123", email: "123") { response in
-                switch response.result {
-                case .success(let logout):
-                    print("registry \(logout)")
-                case .failure(let error):
-                    print(error.localizedDescription)
-                }
-            }
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
-            auth.changeUserData(userID: "123", userName: "123", password: "123", email: "123") { response in
-                switch response.result {
-                case .success(let logout):
-                    print("changeUserData \(logout)")
-                case .failure(let error):
-                    print(error.localizedDescription)
-                }
             }
         }
         
