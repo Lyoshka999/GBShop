@@ -12,10 +12,8 @@ protocol AbstactRequestFactory {
     var errorParser: AbstractErrorParser { get }
     var sessionManager: Session { get }
     var queue: DispatchQueue { get }
-    
     func request<T: Decodable>(request: URLRequestConvertible,
                                completionHandler: @escaping (AFDataResponse<T>) -> Void) -> DataRequest
-    
 }
 
 extension AbstactRequestFactory {

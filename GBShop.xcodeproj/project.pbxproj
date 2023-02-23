@@ -30,6 +30,9 @@
 		1F6AB531299A786A00487207 /* AbstractRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6AB530299A786A00487207 /* AbstractRequestFactory.swift */; };
 		1F6AB535299A78A600487207 /* ErrorParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6AB534299A78A600487207 /* ErrorParser.swift */; };
 		1F6AB537299A78BF00487207 /* AbstractErrorParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6AB536299A78BF00487207 /* AbstractErrorParser.swift */; };
+		1FE2A55C29A7A8DA006E9CD4 /* ReviewRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE2A55B29A7A8DA006E9CD4 /* ReviewRequestFactory.swift */; };
+		1FE2A55E29A7A8E7006E9CD4 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE2A55D29A7A8E7006E9CD4 /* Review.swift */; };
+		1FE2A56029A7A99A006E9CD4 /* ResultUserMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE2A55F29A7A99A006E9CD4 /* ResultUserMessage.swift */; };
 		2CC511FFC385DA7FD53BF481 /* Pods_GBShopTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0587CDD0582B61233EFBE865 /* Pods_GBShopTests.framework */; };
 		8C99C075F74FE44013789E8E /* Pods_GBShop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AFB4B3974B97C66E6073315 /* Pods_GBShop.framework */; };
 		8F39A3C874E2395D15F00E84 /* Pods_GBShop_GBShopUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50182F1CDB536C8DD0231E5E /* Pods_GBShop_GBShopUITests.framework */; };
@@ -81,6 +84,9 @@
 		1F6AB530299A786A00487207 /* AbstractRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractRequestFactory.swift; sourceTree = "<group>"; };
 		1F6AB534299A78A600487207 /* ErrorParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorParser.swift; sourceTree = "<group>"; };
 		1F6AB536299A78BF00487207 /* AbstractErrorParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractErrorParser.swift; sourceTree = "<group>"; };
+		1FE2A55B29A7A8DA006E9CD4 /* ReviewRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRequestFactory.swift; sourceTree = "<group>"; };
+		1FE2A55D29A7A8E7006E9CD4 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
+		1FE2A55F29A7A99A006E9CD4 /* ResultUserMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultUserMessage.swift; sourceTree = "<group>"; };
 		3F7C4A215FEDD247BE082DE5 /* Pods-GBShopTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GBShopTests.debug.xcconfig"; path = "Target Support Files/Pods-GBShopTests/Pods-GBShopTests.debug.xcconfig"; sourceTree = "<group>"; };
 		50182F1CDB536C8DD0231E5E /* Pods_GBShop_GBShopUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GBShop_GBShopUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AFB4B3974B97C66E6073315 /* Pods_GBShop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GBShop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,6 +141,7 @@
 		1F541B5B299BD93C00106DEE /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				1FE2A55A29A7A8AB006E9CD4 /* Review */,
 				1F541B63299C0CFE00106DEE /* Auth */,
 				1F541B62299C0CE100106DEE /* Product */,
 				1F541B5C299BD95F00106DEE /* RequestFactory.swift */,
@@ -271,6 +278,7 @@
 				1F647D81299BB58B00F8B8A1 /* ResponseResult.swift */,
 				1F647D83299BB5C900F8B8A1 /* Gender.swift */,
 				1F541B6A299C0E9300106DEE /* Product.swift */,
+				1FE2A55F29A7A99A006E9CD4 /* ResultUserMessage.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -295,6 +303,15 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		1FE2A55A29A7A8AB006E9CD4 /* Review */ = {
+			isa = PBXGroup;
+			children = (
+				1FE2A55B29A7A8DA006E9CD4 /* ReviewRequestFactory.swift */,
+				1FE2A55D29A7A8E7006E9CD4 /* Review.swift */,
+			);
+			path = Review;
+			sourceTree = "<group>";
+		};
 		F547C8B4BA45586B1F35A1FD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -317,6 +334,7 @@
 				1F6AB4ED2991913B00487207 /* Frameworks */,
 				1F6AB4EE2991913B00487207 /* Resources */,
 				32AD4E71C07ADB29FA6195D8 /* [CP] Embed Pods Frameworks */,
+				1FE2A56129A7AF25006E9CD4 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -436,6 +454,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1FE2A56129A7AF25006E9CD4 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/SwiftLint/swiftlint\" --config .swiftlint.yml\n";
+		};
 		32AD4E71C07ADB29FA6195D8 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -556,9 +592,12 @@
 				1F541B69299C0DA700106DEE /* ProductList.swift in Sources */,
 				1F647D7E299BB56B00F8B8A1 /* LoginResult.swift in Sources */,
 				1F647D80299BB57600F8B8A1 /* User.swift in Sources */,
+				1FE2A56029A7A99A006E9CD4 /* ResultUserMessage.swift in Sources */,
 				1F541B61299BD9A200106DEE /* AuthRequestFactory.swift in Sources */,
+				1FE2A55E29A7A8E7006E9CD4 /* Review.swift in Sources */,
 				1F6AB52D299A782500487207 /* DataRequest.swift in Sources */,
 				1F6AB4F42991913B00487207 /* AppDelegate.swift in Sources */,
+				1FE2A55C29A7A8DA006E9CD4 /* ReviewRequestFactory.swift in Sources */,
 				1F6AB4F62991913B00487207 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
