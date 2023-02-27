@@ -15,7 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let requestFactory = RequestFactory()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
 //        let auth = requestFactory.makeAuthRequestFactory()
 //        auth.login(userName: "Somebody", password: "mypassword") { response in
 //            switch response.result {
@@ -68,7 +67,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //                print(error.localizedDescription)
 //            }
 //        }
-        
         let reviewRequestFactory = self.requestFactory.makeReviewRequestFactory()
         reviewRequestFactory.addReview(userId: 123, textReview: "test") { response in
             switch response.result {
@@ -78,7 +76,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print(error.localizedDescription)
             }
         }
-        
         reviewRequestFactory.approveReview(idComment: 123) { response in
             switch response.result {
             case .success(let result):
@@ -87,7 +84,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print(error.localizedDescription)
             }
         }
-        
         reviewRequestFactory.deleteReview(idComment: 123){ response in
             switch response.result {
             case .success(let result):
@@ -96,6 +92,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print(error.localizedDescription)
             }
         }
+       
+        let basketRequestFactory = self.requestFactory.makeBasketRequestFactory()
+        
+        for item in 1...10 {
+            let idProduct = item
+            let quantity = item + 10
+            basketRequestFactory.addToBasket(idProduct: idProduct, quantity: quantity) { response in
+                switch response.result {
+                case .success(let result):
+                    print("add to basket product \(idProduct) quantity \(quantity) result \(result)")
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+        }
+        
+        basketRequestFactory.payBasket()
+        
         
         return true
     }
@@ -114,6 +128,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
-
 }
-
