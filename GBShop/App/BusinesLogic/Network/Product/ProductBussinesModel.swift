@@ -6,24 +6,39 @@
 //
 
 import Foundation
+import Alamofire
+
+//class ProductBussinesModel: NetworkModel {
+//
+//    private let requestFactory = RequestFactory()
+//
+//    func send(_ producFunction: ProductFunction) {
+//        let productRequestFactory = self.requestFactory.makeProductListRequestFactory()
+//
+//        switch producFunction {
+//        case .getProductList:
+//            productRequestFactory.getProductList(page: 1, category: 1) { response in
+//                switch response.result {
+//                case .success(let result):
+//                    print("result \(result)")
+//                case .failure(let error):
+//                    print(error.localizedDescription)
+//                }
+//            }
+//        }
+//    }
+//}
 
 class ProductBussinesModel: NetworkModel {
     
     private let requestFactory = RequestFactory()
     
-    func send(_ producFunction: ProductFunction) {
+    func send(_ producFunction: ProductFunction, completion: @escaping (AFDataResponse<[Product]>) -> Void) {
         let productRequestFactory = self.requestFactory.makeProductListRequestFactory()
         
         switch producFunction {
         case .getProductList:
-            productRequestFactory.getProductList(page: 1, category: 1) { response in
-                switch response.result {
-                case .success(let result):
-                    print("result \(result)")
-                case .failure(let error):
-                    print(error.localizedDescription)
-                }
-            }
+            productRequestFactory.getProductList(page: 1, category: 1, completion: completion)
         }
     }
 }
