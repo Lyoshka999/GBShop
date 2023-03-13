@@ -10,12 +10,13 @@ import UIKit
 class AuthViewController: UIViewController {
     var loginTextField: UITextField!
     var passwordTextField: UITextField!
-    let authBussinesModel = AuthBussinesModel()
+    let loginBussinesModel = LoginBussinesModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
     }
+    
     private func setupViews() {
 
         view.backgroundColor = .systemBackground
@@ -74,7 +75,17 @@ class AuthViewController: UIViewController {
     // MARK: - user action
     @objc
     func loginButtonClick() {
-        self.authBussinesModel.send(.login)
+        loginBussinesModel.send(.login) { response in
+            switch response.result {
+            case .success(let result):
+                DispatchQueue.main.async {
+                    let productListVC = ProductListViewController()
+                    self.present(productListVC, animated: true, completion: nil)
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
     
     // MARK: - setup views
@@ -82,7 +93,6 @@ class AuthViewController: UIViewController {
         let headLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
         headLabel.translatesAutoresizingMaskIntoConstraints = false
         headLabel.text = "GBShop"
-        headLabel.textColor = .blue
         headLabel.font = .systemFont(ofSize: 40)
         headLabel.textAlignment = .center
         return headLabel
