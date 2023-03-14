@@ -30,12 +30,13 @@ class AuthTests: XCTestCase {
     }
     
     func testLogin() {
-        let auth = self.requestFactory.makeAuthRequestFactory()
+        let auth = self.requestFactory.makeLoginRequestFactory()
         auth.login(userName: "Somebody", password: "mypassword") { response in
             switch response.result {
             case .success(let login):
                 XCTAssert(login.result == 1)
                 XCTAssert(login.user.id == 123)
+                XCTAssert(login.user.name == "John")
             case .failure(let error):
                 print(error)
                 XCTFail()

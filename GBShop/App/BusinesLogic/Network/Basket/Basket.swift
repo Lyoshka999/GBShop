@@ -38,12 +38,12 @@ extension Basket: BasketRequestFactory {
     }
     
     func payBasket() {
-        productList.forEach { idProduct, _ in
-            deleteFromBasket(idProduct: idProduct) { result in
-                print("delete product \(idProduct) result \(result)")
-            }
-        }
-        productList = [:]
+//        productList.forEach { idProduct, _ in
+//            deleteFromBasket(idProduct: idProduct) { result in
+//                print("delete product \(idProduct) result \(result)")
+//            }
+//        }
+//        productList = [:]
     }
 }
 
